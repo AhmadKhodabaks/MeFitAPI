@@ -12,6 +12,7 @@ namespace MeFitAPI.DataAccess
             {
                     new Address
                     {
+                        Id = 1,
                         AddressLine1 = "Dam 1",
                         PostalCode = "1012 JS",
                         City = "Amsterdam",
@@ -19,6 +20,7 @@ namespace MeFitAPI.DataAccess
                     },
                     new Address
                     {
+                        Id=2,
                         AddressLine1 = "Grote Markt 1",
                         PostalCode = "9711 LV",
                         City = "Groningen",
@@ -26,6 +28,7 @@ namespace MeFitAPI.DataAccess
                     },
                     new Address
                     {
+                        Id = 3,
                         AddressLine1 = "Oudegracht 129",
                         PostalCode = "3511 AE",
                         City = "Utrecht",
@@ -33,6 +36,7 @@ namespace MeFitAPI.DataAccess
                     },
                     new Address
                     {
+                        Id = 4,
                         AddressLine1 = "Markt 1",
                         PostalCode = "4811 WG",
                         City = "Breda",
@@ -40,6 +44,7 @@ namespace MeFitAPI.DataAccess
                     },
                     new Address
                     {
+                        Id = 5,
                         AddressLine1 = "Keizersgracht 123",
                         PostalCode = "1015 CJ",
                         City = "Amsterdam",
@@ -47,6 +52,7 @@ namespace MeFitAPI.DataAccess
                     },
                     new Address
                     {
+                        Id = 6,
                         AddressLine1 = "Grote Marktstraat 1",
                         PostalCode = "2511 BJ",
                         City = "Den Haag",
@@ -54,6 +60,7 @@ namespace MeFitAPI.DataAccess
                     },
                     new Address
                     {
+                        Id = 7,
                         AddressLine1 = "Hoogstraat 1",
                         PostalCode = "3011 PG",
                         City = "Rotterdam",
@@ -61,6 +68,7 @@ namespace MeFitAPI.DataAccess
                     },
                     new Address
                     {
+                        Id = 8,
                         AddressLine1 = "Binnenwegplein 1",
                         PostalCode = "3012 KA",
                         City = "Rotterdam",
@@ -68,6 +76,7 @@ namespace MeFitAPI.DataAccess
                     },
                     new Address
                     {
+                        Id = 9,
                         AddressLine1 = "Vrijthof 1",
                         PostalCode = "6211 LE",
                         City = "Maastricht",
@@ -75,6 +84,7 @@ namespace MeFitAPI.DataAccess
                     },
                     new Address
                     {
+                        Id = 10,
                         AddressLine1 = "Neude 1",
                         PostalCode = "3512 JE",
                         City = "Utrecht",
