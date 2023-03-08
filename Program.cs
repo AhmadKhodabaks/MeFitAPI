@@ -8,12 +8,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Retrieves database credentials from environment variables
-string host = Environment.GetEnvironmentVariable("PGHOST");
-string database = Environment.GetEnvironmentVariable("PGDATABASE");
-string username = Environment.GetEnvironmentVariable("PGUSER");
-string password = Environment.GetEnvironmentVariable("PGPASSWORD");
-string port = Environment.GetEnvironmentVariable("PGPORT");
-
 var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 var databaseUri = new Uri(databaseUrl);
 var userInfo = databaseUri.UserInfo.Split(':');
@@ -46,11 +40,11 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-}
+//if (app.Environment.IsDevelopment())
+//{
+//}
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options => { options.RoutePrefix = String.Empty; });
 
 app.UseHttpsRedirection();
 
