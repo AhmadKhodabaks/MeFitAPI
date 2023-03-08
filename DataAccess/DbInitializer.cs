@@ -117,16 +117,16 @@ namespace MeFitAPI.DataAccess
         {
             return new List<Exercise>
            {
-               new Exercise { Id = 1, Name = "Squats", TargetMuscleGroup = "Legs", ImageLink = "https://example.com/squats.jpg", VideoLink = "https://youtube.com/watch?v=123" },
-               new Exercise { Id = 2, Name = "Bench Press", TargetMuscleGroup = "Chest", ImageLink = "https://example.com/bench-press.jpg", VideoLink = "https://youtube.com/watch?v=456" },
-               new Exercise { Id = 3, Name = "Deadlifts", TargetMuscleGroup = "Back", ImageLink = "https://example.com/deadlifts.jpg", VideoLink = "https://youtube.com/watch?v=789" },
-               new Exercise { Id = 4, Name = "Pull-Ups", TargetMuscleGroup = "Back", ImageLink = "https://example.com/pull-ups.jpg", VideoLink = "https://youtube.com/watch?v=abc" },
-               new Exercise { Id = 5, Name = "Push-Ups", TargetMuscleGroup = "Chest", ImageLink = "https://example.com/push-ups.jpg", VideoLink = "https://youtube.com/watch?v=def" },
-               new Exercise { Id = 6, Name = "Shoulder Press", TargetMuscleGroup = "Shoulders", ImageLink = "https://example.com/shoulder-press.jpg", VideoLink = "https://youtube.com/watch?v=ghi" },
-               new Exercise { Id = 7, Name = "Bicep Curls", TargetMuscleGroup = "Biceps", ImageLink = "https://example.com/bicep-curls.jpg", VideoLink = "https://youtube.com/watch?v=jkl" },
-               new Exercise { Id = 8, Name = "Tricep Extensions", TargetMuscleGroup = "Triceps", ImageLink = "https://example.com/tricep-extensions.jpg", VideoLink = "https://youtube.com/watch?v=mno" },
-               new Exercise { Id = 9, Name = "Crunches", TargetMuscleGroup = "Abs", ImageLink = "https://example.com/crunches.jpg", VideoLink = "https://youtube.com/watch?v=pqr" },
-               new Exercise { Id = 10, Name = "Planks", TargetMuscleGroup = "Abs", ImageLink = "https://example.com/planks.jpg", VideoLink = "https://youtube.com/watch?v=stu" }
+               new Exercise { Id = 1, Name = "Squats", Description = "A full-body workout that focuses on strengthening your core and improving your balance.", TargetMuscleGroup = "Legs", ImageLink = "https://example.com/squats.jpg", VideoLink = "https://youtube.com/watch?v=123" },
+               new Exercise { Id = 2, Name = "Bench Press", Description = "A high-intensity interval training (HIIT) session that combines cardio and strength training.", TargetMuscleGroup = "Chest", ImageLink = "https://example.com/bench-press.jpg", VideoLink = "https://youtube.com/watch?v=456" },
+               new Exercise { Id = 3, Name = "Deadlifts", Description = "An upper-body workout that targets your chest, shoulders, and triceps.", TargetMuscleGroup = "Back", ImageLink = "https://example.com/deadlifts.jpg", VideoLink = "https://youtube.com/watch?v=789" },
+               new Exercise { Id = 4, Name = "Pull-Ups", Description = "A lower-body workout that focuses on toning your legs and glutes.", TargetMuscleGroup = "Back", ImageLink = "https://example.com/pull-ups.jpg", VideoLink = "https://youtube.com/watch?v=abc" },
+               new Exercise { Id = 5, Name = "Push-Ups", Description = "A flexibility and mobility workout that improves your range of motion and prevents injuries.", TargetMuscleGroup = "Chest", ImageLink = "https://example.com/push-ups.jpg", VideoLink = "https://youtube.com/watch?v=def" },
+               new Exercise { Id = 6, Name = "Shoulder Press", Description =  "A cardio workout that gets your heart rate up and burns calories.", TargetMuscleGroup = "Shoulders", ImageLink = "https://example.com/shoulder-press.jpg", VideoLink = "https://youtube.com/watch?v=ghi" },
+               new Exercise { Id = 7, Name = "Bicep Curls", Description = "An agility and coordination workout that challenges your reflexes and balance.", TargetMuscleGroup = "Biceps", ImageLink = "https://example.com/bicep-curls.jpg", VideoLink = "https://youtube.com/watch?v=jkl" },
+               new Exercise { Id = 8, Name = "Tricep Extensions", Description = "A functional training session that simulates real-life movements and improves your overall fitness.", TargetMuscleGroup = "Triceps", ImageLink = "https://example.com/tricep-extensions.jpg", VideoLink = "https://youtube.com/watch?v=mno" },
+               new Exercise { Id = 9, Name = "Crunches", Description = "A plyometric workout that involves explosive movements and enhances your power and speed.", TargetMuscleGroup = "Abs", ImageLink = "https://example.com/crunches.jpg", VideoLink = "https://youtube.com/watch?v=pqr" },
+               new Exercise { Id = 10, Name = "Planks", Description = "A yoga class that promotes relaxation, mindfulness, and body awareness.", TargetMuscleGroup = "Abs", ImageLink = "https://example.com/planks.jpg", VideoLink = "https://youtube.com/watch?v=stu" }
            };
         }
 
