@@ -44,7 +44,9 @@ var app = builder.Build();
 //{
 //}
     app.UseSwagger();
-    app.UseSwaggerUI(options => { options.RoutePrefix = String.Empty; });
+    app.UseSwaggerUI(options => {
+        options.SwaggerEndpoint("swagger/v1/swagger.json", "MeFitAPIV1");
+        options.RoutePrefix = String.Empty; });
 
 app.UseHttpsRedirection();
 
