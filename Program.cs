@@ -21,16 +21,6 @@ var constructor = new NpgsqlConnectionStringBuilder
 };
 string connectionString = constructor.ToString();
 
-
-// Replaces placeholders in appsettings.json with actual values
-//string connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-//    .Replace("{PGHOST}", host)
-//    .Replace("{PGDATABASE}", database)
-//    .Replace("{PGUSER}", username)
-//    .Replace("{PGPASSWORD}", password)
-//    .Replace("{PGPORT}", port);
-
-
 builder.Services.AddDbContext<MeFitDbContext>(options =>
                 options.UseNpgsql(connectionString));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
