@@ -67,12 +67,6 @@ namespace MeFitAPI.Controllers
 
         }
 
-        // PUT api/<ProfilesController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
         // DELETE api/<ProfilesController>/5
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
