@@ -6,7 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    //options.ReturnHttpNotAcceptable = true;
+}).AddNewtonsoftJson();
 
 string connectionString = ConnectionHelper.GetConnectionString(builder.Configuration);
 builder.Services.AddDbContext<MeFitDbContext>(options =>
