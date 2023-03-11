@@ -2,6 +2,7 @@
 using AutoMapper;
 using MeFitAPI.Models.Domain;
 using MeFitAPI.Models.DTO.ProfilesDTO;
+using MeFitAPI.Models.DTO.UsersDTO;
 
 namespace MeFitAPI.MappingProfiles
 {
@@ -9,8 +10,13 @@ namespace MeFitAPI.MappingProfiles
     {
         public MappingConfig()
         {
+            // Profiles
             CreateMap<ProfileCreateDTO, Models.Domain.Profile>().ReverseMap();
             CreateMap<ProfileUpdateDTO, Models.Domain.Profile>().ReverseMap();
+
+            // Users
+            CreateMap<UserCreateDTO, User>().ReverseMap();
+            CreateMap<UserUpdateDTO, User>().ReverseMap();
         }
     }
 }
