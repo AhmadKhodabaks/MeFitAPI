@@ -1,4 +1,7 @@
 using MeFitAPI.DataAccess;
+using MeFitAPI.MappingProfiles;
+using MeFitAPI.Repository;
+using MeFitAPI.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -26,6 +29,8 @@ builder.Services.AddControllers(options =>
 string connectionString = ConnectionHelper.GetConnectionString(builder.Configuration);
 builder.Services.AddDbContext<MeFitDbContext>(options =>
                 options.UseNpgsql(connectionString));
+builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
+builder.Services.AddAutoMapper(typeof(MappingConfig));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

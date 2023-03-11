@@ -1,132 +1,119 @@
-﻿using MeFitAPI.DataAccess;
+﻿using AutoMapper;
+using MeFitAPI.DataAccess;
 using MeFitAPI.Models.Domain;
+using MeFitAPI.Models.DTO.ProfilesDTO;
+using MeFitAPI.Repository.IRepository;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+namespace MeFitAPI.Controllers;
 
-namespace MeFitAPI.Controllers
+[Route("api/[controller]")]
+[ApiController]
+public class ProfilesController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ProfilesController : ControllerBase
+    private readonly IProfileRepository _context;
+    private readonly IMapper _mapper;
+
+    public ProfilesController(IProfileRepository context, IMapper mapper)
     {
-        private readonly MeFitDbContext _context;
+        _context = context;
+        _mapper = mapper;
+    }
 
-        public ProfilesController(MeFitDbContext context)
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<ActionResult<IEnumerable<Models.Domain.Profile>>> GetAll()
+    {
+        var profiles = await _context.GetAllAsync();
+        return Ok(profiles);
+    }
+
+    // GET api/<ProfilesController>/5
+    [HttpGet("{id}", Name = "GetById")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<Models.Domain.Profile>> GetById(int id)
+    {
+        if (id == 0)
         {
-            _context = context;
+            return BadRequest();
+        }
+        var profile = await _context.GetAsync(u => u.Id == id);
+        if (profile == null)
+        {
+            return NotFound();
+        }
+        return Ok(profile);
+    }
+
+    // POST api/<ProfilesController>
+    [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<Models.Domain.Profile>> Post([FromBody] ProfileCreateDTO value)
+    {
+        if (value == null)
+        {
+            return BadRequest(value);
         }
 
-        [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<IEnumerable<Profile>> GetAll()
+        Models.Domain.Profile model = _mapper.Map<Models.Domain.Profile>(value);
+        await _context.CreateAsync(model);
+
+        return CreatedAtRoute("GetById", new { id = model.Id }, value);
+    }
+
+    // DELETE api/<ProfilesController>/5
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        if (id == 0)
         {
-            var profiles = _context.Profiles.ToList();
-            return Ok(profiles);
+            return BadRequest();
         }
-
-        // GET api/<ProfilesController>/5
-        [HttpGet("{id}", Name = "GetById")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<Profile> GetById(int id)
+        var value = await _context.GetAsync(u => u.Id == id);
+        if (value == null)
         {
-            if (id == 0)
-            {
-                return BadRequest();
-            }
-            var profile = _context.Profiles.FirstOrDefault(u => u.Id == id);
-            if (profile == null)
-            {
-                return NotFound();
-            }
-            return Ok(profile);
+            return NotFound();
         }
+        await _context.RemoveAsync(value);
+        return NoContent();
+    }
 
-        // POST api/<ProfilesController>
-        [HttpPost]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<Profile> Post([FromBody] Profile value)
+    // PATCH api/<ProfilesController>/5
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [HttpPatch("{id}")]
+    public async Task<IActionResult> Patch(int id, JsonPatchDocument<ProfileUpdateDTO> patch)
+    {
+        if (patch == null || id == 0)
         {
-            if (value == null)
-            {
-                return BadRequest(value);
-            }
-            if (value.Id > 0)
-            {
-                return BadRequest("Cannot specify ID value when creating new object.");
-            }
-            _context.Profiles.Add(value);
-            _context.SaveChanges();
-
-            return CreatedAtRoute("GetById", new { id = value.Id }, value);
-
+            return BadRequest();
         }
+        var value = await _context.GetAsync(u => u.Id == id, tracked: false);
 
-        // DELETE api/<ProfilesController>/5
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+
+        ProfileUpdateDTO profileDTO = _mapper.Map<ProfileUpdateDTO>(value);         
+
+        if (profileDTO == null)
         {
-            if (id == 0)
-            {
-                return BadRequest();
-            }
-            var value = _context.Profiles.FirstOrDefault(u => u.Id == id);
-            if (value == null)
-            {
-                return NotFound();
-            }
-            _context.Profiles.Remove(value);
-            _context.SaveChanges();
-            return NoContent();
+            return BadRequest();
         }
+        patch.ApplyTo(profileDTO, ModelState);
 
-        // PATCH api/<ProfilesController>/5
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpPatch("{id}")]
-        public IActionResult Patch(int id, JsonPatchDocument<Profile> patch)
+        Models.Domain.Profile model = _mapper.Map<Models.Domain.Profile>(profileDTO); 
+    
+        await _context.UpdateAsync(model);
+        if (!ModelState.IsValid)
         {
-            if (patch == null || id == 0)
-            {
-                return BadRequest();
-            }
-            var value = _context.Profiles.AsNoTracking().FirstOrDefault(u => u.Id == id);
-            if (value == null)
-            {
-                return BadRequest();
-            }
-            patch.ApplyTo(value, ModelState);
-
-            Profile model = new Profile()
-            {
-                Id = value.Id,
-                Disabilities = value.Disabilities,
-                Address = value.Address,
-                AddressId = value.AddressId,
-                GoalId = value.GoalId,
-                Height = value.Height,
-                MedicalConditions = value.MedicalConditions,
-                ProgramId = value.ProgramId,
-                UserId = value.UserId,
-                Weight = value.Weight,
-                WorkoutId = value.WorkoutId,
-            };
-
-            _context.Profiles.Update(model);
-            _context.SaveChanges();
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            return NoContent();
+            return BadRequest(ModelState);
         }
+        return NoContent();
     }
 }
