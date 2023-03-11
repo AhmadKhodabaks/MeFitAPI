@@ -17,6 +17,10 @@ namespace MeFitAPI.MappingProfiles
             // Users
             CreateMap<UserCreateDTO, User>().ReverseMap();
             CreateMap<UserUpdateDTO, User>().ReverseMap();
+
+            // Workouts
+            CreateMap<WorkoutCreateDTO, Workout>().ReverseMap();
+            CreateMap<WorkoutUpdateDTO, Workout>().ReverseMap();
         }
     }
 }
