@@ -35,13 +35,20 @@ public class ProfilesController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<Models.Domain.Profile>> GetById(int id)
+    public async Task<ActionResult<Models.Domain.Profile>> GetById(int id, string? navigationProperty)
     {
         if (id == 0)
         {
             return BadRequest();
         }
-        var profile = await _context.GetAsync(u => u.Id == id);
+
+        if (!string.IsNullOrEmpty(navigationProperty) &&
+        typeof(Models.Domain.Profile).GetProperty(navigationProperty) == null)
+        {
+            return BadRequest("Invalid navigation property");
+        }
+
+        var profile = await _context.GetAsync(u => u.Id == id, navigationProperty);
         if (profile == null)
         {
             return NotFound();
