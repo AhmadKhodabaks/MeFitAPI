@@ -22,12 +22,17 @@ namespace MeFitAPI.Repository
             await SaveAsync();
         }
 
-        public async Task<T> GetAsync(Expression<Func<T, bool>> filter = null, bool tracked = true)
+        public async Task<T> GetAsync(Expression<Func<T, bool>> filter = null, string navigationProperty = null, bool tracked = true)
         {
             IQueryable<T> query = dbSet;
             if (!tracked)
             {
                 query = query.AsNoTracking();
+            }
+
+            if (!string.IsNullOrEmpty(navigationProperty))
+            {
+                query = query.Include(navigationProperty);
             }
 
             if (filter != null)
