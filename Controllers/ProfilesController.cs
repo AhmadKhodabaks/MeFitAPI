@@ -93,34 +93,34 @@ public class ProfilesController : ControllerBase
         return NoContent();
     }
 
-    // PATCH api/<ProfilesController>/5
-    [ProducesResponseType(StatusCodes.Status204NoContent)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    [HttpPatch("{id}")]
-    public async Task<IActionResult> Patch(int id, JsonPatchDocument<ProfileUpdateDTO> patch)
-    {
-        if (patch == null || id == 0)
+        // PATCH api/<ProfilesController>/5
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> Patch(int id, JsonPatchDocument<ProfileUpdateDTO> patch)
         {
-            return BadRequest();
-        }
-        var value = await _context.GetAsync(u => u.Id == id, tracked: false);
+            if (patch == null || id == 0)
+            {
+                return BadRequest();
+            }
+            var value = await _context.GetAsync(u => u.Id == id, tracked: false);
 
 
-        ProfileUpdateDTO profileDTO = _mapper.Map<ProfileUpdateDTO>(value);         
+            ProfileUpdateDTO profileDTO = _mapper.Map<ProfileUpdateDTO>(value);         
 
-        if (profileDTO == null)
-        {
-            return BadRequest();
-        }
-        patch.ApplyTo(profileDTO, ModelState);
+            if (profileDTO == null)
+            {
+                return BadRequest();
+            }
+            patch.ApplyTo(profileDTO, ModelState);
 
-        Models.Domain.Profile model = _mapper.Map<Models.Domain.Profile>(profileDTO); 
+            Models.Domain.Profile model = _mapper.Map<Models.Domain.Profile>(profileDTO); 
     
-        await _context.UpdateAsync(model);
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
+            await _context.UpdateAsync(model);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            return NoContent();
         }
-        return NoContent();
-    }
 }
