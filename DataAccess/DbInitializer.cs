@@ -412,7 +412,7 @@ namespace MeFitAPI.DataAccess
                                 {
                                     Id = 1,
                                     Email = "john@example.com",
-                                    Password = "password123",
+                                    KeycloakId = 1,
                                     FirstName = "John",
                                     LastName = "Doe",
                                     isContributor = false,
@@ -422,7 +422,7 @@ namespace MeFitAPI.DataAccess
                                 {
                                     Id = 2,
                                     Email = "jane@example.com",
-                                    Password = "secret456",
+                                    KeycloakId = 2,
                                     FirstName = "Jane",
                                     LastName = "Doe",
                                     isContributor = true,
@@ -432,7 +432,7 @@ namespace MeFitAPI.DataAccess
                                 {
                                     Id = 3,
                                     Email = "admin@example.com",
-                                    Password = "adminpass",
+                                    KeycloakId = 3,
                                     FirstName = "Admin",
                                     LastName = "User",
                                     isContributor = false,
@@ -442,7 +442,7 @@ namespace MeFitAPI.DataAccess
                                 {
                                     Id = 4,
                                     Email = "alice@example.com",
-                                    Password = "qwertyuiop",
+                                    KeycloakId = 4,
                                     FirstName = "Alice",
                                     LastName = "Smith",
                                     isContributor = true,
@@ -452,7 +452,7 @@ namespace MeFitAPI.DataAccess
                                 {
                                     Id = 5,
                                     Email = "bob@example.com",
-                                    Password = "asdfghjkl",
+                                    KeycloakId = 5,
                                     FirstName = "Bob",
                                     LastName = "Johnson",
                                     isContributor = false,
@@ -462,7 +462,7 @@ namespace MeFitAPI.DataAccess
                                 {
                                     Id = 6,
                                     Email = "jimmy@example.com",
-                                    Password = "password",
+                                    KeycloakId = 6,
                                     FirstName = "Jimmy",
                                     LastName = "Nguyen",
                                     isContributor = true,
@@ -472,7 +472,7 @@ namespace MeFitAPI.DataAccess
                                 {
                                     Id = 7,
                                     Email = "sara@example.com",
-                                    Password = "pass123",
+                                    KeycloakId = 7,
                                     FirstName = "Sara",
                                     LastName = "Kim",
                                     isContributor = false,
@@ -482,7 +482,7 @@ namespace MeFitAPI.DataAccess
                                 {
                                     Id = 8,
                                     Email = "steve@example.com",
-                                    Password = "password1",
+                                    KeycloakId = 8,
                                     FirstName = "Steve",
                                     LastName = "Lee",
                                     isContributor = true,
@@ -492,7 +492,7 @@ namespace MeFitAPI.DataAccess
                                 {
                                     Id = 9,
                                     Email = "lisa@example.com",
-                                    Password = "p@ssw0rd",
+                                    KeycloakId = 9,
                                     FirstName = "Lisa",
                                     LastName = "Garcia",
                                     isContributor = false,
@@ -502,7 +502,7 @@ namespace MeFitAPI.DataAccess
                                 {
                                     Id = 10,
                                     Email = "mike@example.com",
-                                    Password = "mypassword",
+                                    KeycloakId = 10,
                                     FirstName = "Mike",
                                     LastName = "Brown",
                                     isContributor = true,
