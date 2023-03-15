@@ -10,6 +10,6 @@ public class UserUpdateDTO
     public string Email { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
-    public bool isContributor { get; set; }
-    public bool isAdmin { get; set; }
+    public bool IsContributor { get; set; }
+    public bool IsAdmin { get; set; }
 }
