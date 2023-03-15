@@ -35,13 +35,20 @@ public class WorkoutsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<Workout>> GetById(int id)
+    public async Task<ActionResult<Workout>> GetById(int id, string? navigationProperty)
     {
         if (id == 0)
         {
             return BadRequest();
         }
-        var workout = await _context.GetAsync(u => u.Id == id);
+
+        if (!string.IsNullOrEmpty(navigationProperty) &&
+        typeof(Workout).GetProperty(navigationProperty) == null)
+        {
+            return BadRequest("Invalid navigation property");
+        }
+
+        var workout = await _context.GetAsync(u => u.Id == id, navigationProperty);
         if (workout == null)
         {
             return NotFound();

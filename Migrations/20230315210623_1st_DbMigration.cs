@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MeFitAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class _1_DbMigration : Migration
+    public partial class _1st_DbMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -138,22 +138,6 @@ namespace MeFitAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Workouts",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    Type = table.Column<string>(type: "text", nullable: false),
-                    Complete = table.Column<bool>(type: "boolean", nullable: false),
-                    SetId = table.Column<int>(type: "integer", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Workouts", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Profiles",
                 columns: table => new
                 {
@@ -176,6 +160,28 @@ namespace MeFitAPI.Migrations
                         name: "FK_Profiles_Addresses_AddressId",
                         column: x => x.AddressId,
                         principalTable: "Addresses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Workouts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Type = table.Column<string>(type: "text", nullable: false),
+                    Complete = table.Column<bool>(type: "boolean", nullable: false),
+                    SetId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Workouts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Workouts_Sets_SetId",
+                        column: x => x.SetId,
+                        principalTable: "Sets",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -317,23 +323,6 @@ namespace MeFitAPI.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Workouts",
-                columns: new[] { "Id", "Complete", "Name", "SetId", "Type" },
-                values: new object[,]
-                {
-                    { 1, true, "Squat", 1, "Strength" },
-                    { 2, false, "Bench Press", 2, "Strength" },
-                    { 3, true, "Deadlift", 3, "Strength" },
-                    { 4, true, "Push-up", 4, "Calisthenics" },
-                    { 5, false, "Pull-up", 5, "Calisthenics" },
-                    { 6, true, "Sprint", 6, "Cardio" },
-                    { 7, false, "Swimming", 7, "Cardio" },
-                    { 8, true, "Yoga", 8, "Flexibility" },
-                    { 9, true, "Pilates", 9, "Flexibility" },
-                    { 10, false, "Jump Rope", 10, "Cardio" }
-                });
-
-            migrationBuilder.InsertData(
                 table: "Profiles",
                 columns: new[] { "Id", "AddressId", "Disabilities", "GoalId", "Height", "MedicalConditions", "ProgramId", "UserId", "Weight", "WorkoutId" },
                 values: new object[,]
@@ -350,10 +339,32 @@ namespace MeFitAPI.Migrations
                     { 10, 10, "None", 10, "180", "Asthma", 10, "10", "80", 10 }
                 });
 
+            migrationBuilder.InsertData(
+                table: "Workouts",
+                columns: new[] { "Id", "Complete", "Name", "SetId", "Type" },
+                values: new object[,]
+                {
+                    { 1, true, "Squat", 1, "Strength" },
+                    { 2, false, "Bench Press", 2, "Strength" },
+                    { 3, true, "Deadlift", 3, "Strength" },
+                    { 4, true, "Push-up", 4, "Calisthenics" },
+                    { 5, false, "Pull-up", 5, "Calisthenics" },
+                    { 6, true, "Sprint", 6, "Cardio" },
+                    { 7, false, "Swimming", 7, "Cardio" },
+                    { 8, true, "Yoga", 8, "Flexibility" },
+                    { 9, true, "Pilates", 9, "Flexibility" },
+                    { 10, false, "Jump Rope", 10, "Cardio" }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Profiles_AddressId",
                 table: "Profiles",
                 column: "AddressId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Workouts_SetId",
+                table: "Workouts",
+                column: "SetId");
         }
 
         /// <inheritdoc />
@@ -378,9 +389,6 @@ namespace MeFitAPI.Migrations
                 name: "ProgramWorkouts");
 
             migrationBuilder.DropTable(
-                name: "Sets");
-
-            migrationBuilder.DropTable(
                 name: "Users");
 
             migrationBuilder.DropTable(
@@ -388,6 +396,9 @@ namespace MeFitAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "Addresses");
+
+            migrationBuilder.DropTable(
+                name: "Sets");
         }
     }
 }

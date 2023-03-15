@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MeFitAPI.Migrations
 {
     [DbContext(typeof(MeFitDbContext))]
-    [Migration("20230315170531_1_DbMigration")]
-    partial class _1_DbMigration
+    [Migration("20230315210623_1st_DbMigration")]
+    partial class _1st_DbMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1041,6 +1041,8 @@ namespace MeFitAPI.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("SetId");
+
                     b.ToTable("Workouts");
 
                     b.HasData(
@@ -1135,6 +1137,17 @@ namespace MeFitAPI.Migrations
                         .IsRequired();
 
                     b.Navigation("Address");
+                });
+
+            modelBuilder.Entity("MeFitAPI.Models.Domain.Workout", b =>
+                {
+                    b.HasOne("MeFitAPI.Models.Domain.Set", "Set")
+                        .WithMany()
+                        .HasForeignKey("SetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Set");
                 });
 #pragma warning restore 612, 618
         }
