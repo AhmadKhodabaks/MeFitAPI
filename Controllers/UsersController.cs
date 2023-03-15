@@ -33,13 +33,13 @@ public class UsersController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<User>> GetById(int id)
+    public async Task<ActionResult<User>> GetById(string id)
     {
-        if (id == 0)
+        if (string.IsNullOrEmpty(id))
         {
             return BadRequest();
         }
-        var user = await _context.GetAsync(u => u.Id == id);
+        var user = await _context.GetAsync(u => string.Equals(u.Id, id));
         if (user == null)
         {
             return NotFound();
@@ -69,13 +69,13 @@ public class UsersController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(int id)
+    public async Task<IActionResult> Delete(string id)
     {
-        if (id == 0)
+        if (string.IsNullOrEmpty(id))
         {
             return BadRequest();
         }
-        var value = await _context.GetAsync(u => u.Id == id);
+        var value = await _context.GetAsync(u => string.Equals(u.Id, id));
         if (value == null)
         {
             return NotFound();
@@ -88,13 +88,13 @@ public class UsersController : ControllerBase
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [HttpPatch("{id}")]
-    public async Task<IActionResult> Patch(int id, JsonPatchDocument<UserUpdateDTO> patch)
+    public async Task<IActionResult> Patch(string id, JsonPatchDocument<UserUpdateDTO> patch)
     {
-        if (patch == null || id == 0)
+        if (patch == null || string.IsNullOrEmpty(id))
         {
             return BadRequest();
         }
-        var value = await _context.GetAsync(u => u.Id == id, tracked: false);
+        var value = await _context.GetAsync(u => string.Equals(u.Id, id), tracked: false);
 
 
         UserUpdateDTO userDTO = _mapper.Map<UserUpdateDTO>(value);
