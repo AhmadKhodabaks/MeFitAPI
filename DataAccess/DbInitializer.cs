@@ -175,7 +175,7 @@ namespace MeFitAPI.DataAccess
                         Height = "170",
                         MedicalConditions = "None",
                         Disabilities = "None",
-                        UserId = 1,
+                        UserId = "1",
                         GoalId = 1,
                         AddressId = 1,
                         ProgramId = 1,
@@ -188,7 +188,7 @@ namespace MeFitAPI.DataAccess
                         Height = "160",
                         MedicalConditions = "Asthma",
                         Disabilities = "None",
-                        UserId = 2,
+                        UserId = "2",
                         GoalId = 2,
                         AddressId = 2,
                         ProgramId = 2,
@@ -201,7 +201,7 @@ namespace MeFitAPI.DataAccess
                         Height = "180",
                         MedicalConditions = "Diabetes",
                         Disabilities = "None",
-                        UserId = 3,
+                        UserId = "3",
                         GoalId = 3,
                         AddressId = 3,
                         ProgramId = 3,
@@ -214,7 +214,7 @@ namespace MeFitAPI.DataAccess
                         Height = "175",
                         MedicalConditions = "None",
                         Disabilities = "None",
-                        UserId = 4,
+                        UserId = "4",
                         GoalId = 4,
                         AddressId = 4,
                         ProgramId = 4,
@@ -227,7 +227,7 @@ namespace MeFitAPI.DataAccess
                         Height = "155",
                         MedicalConditions = "Hypertension",
                         Disabilities = "None",
-                        UserId = 5,
+                        UserId = "5",
                         GoalId = 5,
                         AddressId = 5,
                         ProgramId = 5,
@@ -240,7 +240,7 @@ namespace MeFitAPI.DataAccess
                         Height = "165",
                         MedicalConditions = "None",
                         Disabilities = "Blindness",
-                        UserId = 6,
+                        UserId = "6",
                         GoalId = 6,
                         AddressId = 6,
                         ProgramId = 6,
@@ -253,7 +253,7 @@ namespace MeFitAPI.DataAccess
                         Height = "190",
                         MedicalConditions = "Arthritis",
                         Disabilities = "None",
-                        UserId = 7,
+                        UserId = "7",
                         GoalId = 7,
                         AddressId = 7,
                         ProgramId = 7,
@@ -266,7 +266,7 @@ namespace MeFitAPI.DataAccess
                         Height = "195",
                         MedicalConditions = "None",
                         Disabilities = "Deafness",
-                        UserId = 8,
+                        UserId = "8",
                         GoalId = 8,
                         AddressId = 8,
                         ProgramId = 8,
@@ -279,7 +279,7 @@ namespace MeFitAPI.DataAccess
                         Height = "150",
                         MedicalConditions = "None",
                         Disabilities = "None",
-                        UserId = 9,
+                        UserId = "9",
                         GoalId = 9,
                         AddressId = 9,
                         ProgramId = 9,
@@ -292,7 +292,7 @@ namespace MeFitAPI.DataAccess
                         Height = "180",
                         MedicalConditions = "Asthma",
                         Disabilities = "None",
-                        UserId = 10,
+                        UserId = "10",
                         GoalId = 10,
                         AddressId = 10,
                         ProgramId = 10,
@@ -410,9 +410,8 @@ namespace MeFitAPI.DataAccess
             {
                                 new User
                                 {
-                                    Id = 1,
+                                    Id = "1",
                                     Email = "john@example.com",
-                                    KeycloakId = "test123",
                                     FirstName = "John",
                                     LastName = "Doe",
                                     IsContributor = false,
@@ -420,9 +419,8 @@ namespace MeFitAPI.DataAccess
                                 },
                                 new User
                                 {
-                                    Id = 2,
+                                    Id = "2",
                                     Email = "jane@example.com",
-                                    KeycloakId = "test123",
                                     FirstName = "Jane",
                                     LastName = "Doe",
                                     IsContributor = true,
@@ -430,9 +428,8 @@ namespace MeFitAPI.DataAccess
                                 },
                                 new User
                                 {
-                                    Id = 3,
+                                    Id = "3",
                                     Email = "admin@example.com",
-                                    KeycloakId = "test123",
                                     FirstName = "Admin",
                                     LastName = "User",
                                     IsContributor = false,
@@ -440,9 +437,8 @@ namespace MeFitAPI.DataAccess
                                 },
                                 new User
                                 {
-                                    Id = 4,
+                                    Id = "4",
                                     Email = "alice@example.com",
-                                    KeycloakId = "test123",
                                     FirstName = "Alice",
                                     LastName = "Smith",
                                     IsContributor = true,
@@ -450,9 +446,8 @@ namespace MeFitAPI.DataAccess
                                 },
                                 new User
                                 {
-                                    Id = 5,
+                                    Id = "5",
                                     Email = "bob@example.com",
-                                    KeycloakId = "test123",
                                     FirstName = "Bob",
                                     LastName = "Johnson",
                                     IsContributor = false,
@@ -460,9 +455,8 @@ namespace MeFitAPI.DataAccess
                                 },
                                 new User
                                 {
-                                    Id = 6,
+                                    Id = "6",
                                     Email = "jimmy@example.com",
-                                    KeycloakId = "test123",
                                     FirstName = "Jimmy",
                                     LastName = "Nguyen",
                                     IsContributor = true,
@@ -470,9 +464,8 @@ namespace MeFitAPI.DataAccess
                                 },
                                 new User
                                 {
-                                    Id = 7,
+                                    Id = "7",
                                     Email = "sara@example.com",
-                                    KeycloakId = "test123",
                                     FirstName = "Sara",
                                     LastName = "Kim",
                                     IsContributor = false,
@@ -480,9 +473,8 @@ namespace MeFitAPI.DataAccess
                                 },
                                 new User
                                 {
-                                    Id = 8,
+                                    Id = "8",
                                     Email = "steve@example.com",
-                                    KeycloakId = "test123",
                                     FirstName = "Steve",
                                     LastName = "Lee",
                                     IsContributor = true,
@@ -490,9 +482,8 @@ namespace MeFitAPI.DataAccess
                                 },
                                 new User
                                 {
-                                    Id = 9,
+                                    Id = "9",
                                     Email = "lisa@example.com",
-                                    KeycloakId = "test123",
                                     FirstName = "Lisa",
                                     LastName = "Garcia",
                                     IsContributor = false,
@@ -500,9 +491,8 @@ namespace MeFitAPI.DataAccess
                                 },
                                 new User
                                 {
-                                    Id = 10,
+                                    Id = "10",
                                     Email = "mike@example.com",
-                                    KeycloakId = "test123",
                                     FirstName = "Mike",
                                     LastName = "Brown",
                                     IsContributor = true,

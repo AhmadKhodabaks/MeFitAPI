@@ -1,10 +1,13 @@
-﻿namespace MeFitAPI.Models.Domain
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MeFitAPI.Models.Domain
 {
     public class User
     {
-        public int Id { get; set; }
+        [Key]
+        public string Id { get; set; }
         public string Email { get; set; }
-        public string KeycloakId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public bool IsContributor { get; set; }

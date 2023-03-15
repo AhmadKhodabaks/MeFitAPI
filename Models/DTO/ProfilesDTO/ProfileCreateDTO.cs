@@ -10,6 +10,6 @@ public class ProfileCreateDTO
     public string? MedicalConditions { get; set; }
     public string? Disabilities { get; set; }
     [Required]
-    public int UserId { get; set; }
+    public string UserId { get; set; }
     public int AddressId { get; set; }
 }
