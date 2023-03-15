@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MeFitAPI.Migrations
 {
     [DbContext(typeof(MeFitDbContext))]
-    [Migration("20230315131644_ChangeUserModeltoKeyCloakId")]
-    partial class ChangeUserModeltoKeyCloakId
+    [Migration("20230315170531_1_DbMigration")]
+    partial class _1_DbMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -503,8 +503,9 @@ namespace MeFitAPI.Migrations
                     b.Property<int>("ProgramId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Weight")
                         .HasColumnType("text");
@@ -528,7 +529,7 @@ namespace MeFitAPI.Migrations
                             Height = "170",
                             MedicalConditions = "None",
                             ProgramId = 1,
-                            UserId = 1,
+                            UserId = "1",
                             Weight = "70",
                             WorkoutId = 1
                         },
@@ -541,7 +542,7 @@ namespace MeFitAPI.Migrations
                             Height = "160",
                             MedicalConditions = "Asthma",
                             ProgramId = 2,
-                            UserId = 2,
+                            UserId = "2",
                             Weight = "65",
                             WorkoutId = 2
                         },
@@ -554,7 +555,7 @@ namespace MeFitAPI.Migrations
                             Height = "180",
                             MedicalConditions = "Diabetes",
                             ProgramId = 3,
-                            UserId = 3,
+                            UserId = "3",
                             Weight = "80",
                             WorkoutId = 3
                         },
@@ -567,7 +568,7 @@ namespace MeFitAPI.Migrations
                             Height = "175",
                             MedicalConditions = "None",
                             ProgramId = 4,
-                            UserId = 4,
+                            UserId = "4",
                             Weight = "75",
                             WorkoutId = 4
                         },
@@ -580,7 +581,7 @@ namespace MeFitAPI.Migrations
                             Height = "155",
                             MedicalConditions = "Hypertension",
                             ProgramId = 5,
-                            UserId = 5,
+                            UserId = "5",
                             Weight = "60",
                             WorkoutId = 5
                         },
@@ -593,7 +594,7 @@ namespace MeFitAPI.Migrations
                             Height = "165",
                             MedicalConditions = "None",
                             ProgramId = 6,
-                            UserId = 6,
+                            UserId = "6",
                             Weight = "70",
                             WorkoutId = 6
                         },
@@ -606,7 +607,7 @@ namespace MeFitAPI.Migrations
                             Height = "190",
                             MedicalConditions = "Arthritis",
                             ProgramId = 7,
-                            UserId = 7,
+                            UserId = "7",
                             Weight = "85",
                             WorkoutId = 7
                         },
@@ -619,7 +620,7 @@ namespace MeFitAPI.Migrations
                             Height = "195",
                             MedicalConditions = "None",
                             ProgramId = 8,
-                            UserId = 8,
+                            UserId = "8",
                             Weight = "90",
                             WorkoutId = 8
                         },
@@ -632,7 +633,7 @@ namespace MeFitAPI.Migrations
                             Height = "150",
                             MedicalConditions = "None",
                             ProgramId = 9,
-                            UserId = 9,
+                            UserId = "9",
                             Weight = "55",
                             WorkoutId = 9
                         },
@@ -645,7 +646,7 @@ namespace MeFitAPI.Migrations
                             Height = "180",
                             MedicalConditions = "Asthma",
                             ProgramId = 10,
-                            UserId = 10,
+                            UserId = "10",
                             Weight = "80",
                             WorkoutId = 10
                         });
@@ -898,11 +899,8 @@ namespace MeFitAPI.Migrations
 
             modelBuilder.Entity("MeFitAPI.Models.Domain.User", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -912,18 +910,15 @@ namespace MeFitAPI.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("KeycloakId")
-                        .HasColumnType("integer");
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsContributor")
+                        .HasColumnType("boolean");
 
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<bool>("isAdmin")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("isContributor")
-                        .HasColumnType("boolean");
 
                     b.HasKey("Id");
 
@@ -932,103 +927,93 @@ namespace MeFitAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = "1",
                             Email = "john@example.com",
                             FirstName = "John",
-                            KeycloakId = 1,
-                            LastName = "Doe",
-                            isAdmin = false,
-                            isContributor = false
+                            IsAdmin = false,
+                            IsContributor = false,
+                            LastName = "Doe"
                         },
                         new
                         {
-                            Id = 2,
+                            Id = "2",
                             Email = "jane@example.com",
                             FirstName = "Jane",
-                            KeycloakId = 2,
-                            LastName = "Doe",
-                            isAdmin = false,
-                            isContributor = true
+                            IsAdmin = false,
+                            IsContributor = true,
+                            LastName = "Doe"
                         },
                         new
                         {
-                            Id = 3,
+                            Id = "3",
                             Email = "admin@example.com",
                             FirstName = "Admin",
-                            KeycloakId = 3,
-                            LastName = "User",
-                            isAdmin = true,
-                            isContributor = false
+                            IsAdmin = true,
+                            IsContributor = false,
+                            LastName = "User"
                         },
                         new
                         {
-                            Id = 4,
+                            Id = "4",
                             Email = "alice@example.com",
                             FirstName = "Alice",
-                            KeycloakId = 4,
-                            LastName = "Smith",
-                            isAdmin = false,
-                            isContributor = true
+                            IsAdmin = false,
+                            IsContributor = true,
+                            LastName = "Smith"
                         },
                         new
                         {
-                            Id = 5,
+                            Id = "5",
                             Email = "bob@example.com",
                             FirstName = "Bob",
-                            KeycloakId = 5,
-                            LastName = "Johnson",
-                            isAdmin = false,
-                            isContributor = false
+                            IsAdmin = false,
+                            IsContributor = false,
+                            LastName = "Johnson"
                         },
                         new
                         {
-                            Id = 6,
+                            Id = "6",
                             Email = "jimmy@example.com",
                             FirstName = "Jimmy",
-                            KeycloakId = 6,
-                            LastName = "Nguyen",
-                            isAdmin = false,
-                            isContributor = true
+                            IsAdmin = false,
+                            IsContributor = true,
+                            LastName = "Nguyen"
                         },
                         new
                         {
-                            Id = 7,
+                            Id = "7",
                             Email = "sara@example.com",
                             FirstName = "Sara",
-                            KeycloakId = 7,
-                            LastName = "Kim",
-                            isAdmin = false,
-                            isContributor = false
+                            IsAdmin = false,
+                            IsContributor = false,
+                            LastName = "Kim"
                         },
                         new
                         {
-                            Id = 8,
+                            Id = "8",
                             Email = "steve@example.com",
                             FirstName = "Steve",
-                            KeycloakId = 8,
-                            LastName = "Lee",
-                            isAdmin = false,
-                            isContributor = true
+                            IsAdmin = false,
+                            IsContributor = true,
+                            LastName = "Lee"
                         },
                         new
                         {
-                            Id = 9,
+                            Id = "9",
                             Email = "lisa@example.com",
                             FirstName = "Lisa",
-                            KeycloakId = 9,
-                            LastName = "Garcia",
-                            isAdmin = false,
-                            isContributor = false
+                            IsAdmin = false,
+                            IsContributor = false,
+                            LastName = "Garcia"
                         },
                         new
                         {
-                            Id = 10,
+                            Id = "10",
                             Email = "mike@example.com",
                             FirstName = "Mike",
-                            KeycloakId = 10,
-                            LastName = "Brown",
-                            isAdmin = false,
-                            isContributor = true
+                            IsAdmin = false,
+                            IsContributor = true,
+                            LastName = "Brown"
                         });
                 });
 
