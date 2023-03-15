@@ -412,101 +412,101 @@ namespace MeFitAPI.DataAccess
                                 {
                                     Id = 1,
                                     Email = "john@example.com",
-                                    KeycloakId = 1,
+                                    KeycloakId = "",
                                     FirstName = "John",
                                     LastName = "Doe",
-                                    isContributor = false,
-                                    isAdmin = false
+                                    IsContributor = false,
+                                    IsAdmin = false
                                 },
                                 new User
                                 {
                                     Id = 2,
                                     Email = "jane@example.com",
-                                    KeycloakId = 2,
+                                    KeycloakId = "",
                                     FirstName = "Jane",
                                     LastName = "Doe",
-                                    isContributor = true,
-                                    isAdmin = false
+                                    IsContributor = true,
+                                    IsAdmin = false
                                 },
                                 new User
                                 {
                                     Id = 3,
                                     Email = "admin@example.com",
-                                    KeycloakId = 3,
+                                    KeycloakId = "",
                                     FirstName = "Admin",
                                     LastName = "User",
-                                    isContributor = false,
-                                    isAdmin = true
+                                    IsContributor = false,
+                                    IsAdmin = true
                                 },
                                 new User
                                 {
                                     Id = 4,
                                     Email = "alice@example.com",
-                                    KeycloakId = 4,
+                                    KeycloakId = "",
                                     FirstName = "Alice",
                                     LastName = "Smith",
-                                    isContributor = true,
-                                    isAdmin = false
+                                    IsContributor = true,
+                                    IsAdmin = false
                                 },
                                 new User
                                 {
                                     Id = 5,
                                     Email = "bob@example.com",
-                                    KeycloakId = 5,
+                                    KeycloakId = "",
                                     FirstName = "Bob",
                                     LastName = "Johnson",
-                                    isContributor = false,
-                                    isAdmin = false
+                                    IsContributor = false,
+                                    IsAdmin = false
                                 },
                                 new User
                                 {
                                     Id = 6,
                                     Email = "jimmy@example.com",
-                                    KeycloakId = 6,
+                                    KeycloakId = "",
                                     FirstName = "Jimmy",
                                     LastName = "Nguyen",
-                                    isContributor = true,
-                                    isAdmin = false
+                                    IsContributor = true,
+                                    IsAdmin = false
                                 },
                                 new User
                                 {
                                     Id = 7,
                                     Email = "sara@example.com",
-                                    KeycloakId = 7,
+                                    KeycloakId = "",
                                     FirstName = "Sara",
                                     LastName = "Kim",
-                                    isContributor = false,
-                                    isAdmin = false
+                                    IsContributor = false,
+                                    IsAdmin = false
                                 },
                                 new User
                                 {
                                     Id = 8,
                                     Email = "steve@example.com",
-                                    KeycloakId = 8,
+                                    KeycloakId = "",
                                     FirstName = "Steve",
                                     LastName = "Lee",
-                                    isContributor = true,
-                                    isAdmin = false
+                                    IsContributor = true,
+                                    IsAdmin = false
                                 },
                                 new User
                                 {
                                     Id = 9,
                                     Email = "lisa@example.com",
-                                    KeycloakId = 9,
+                                    KeycloakId = "",
                                     FirstName = "Lisa",
                                     LastName = "Garcia",
-                                    isContributor = false,
-                                    isAdmin = false
+                                    IsContributor = false,
+                                    IsAdmin = false
                                 },
                                 new User
                                 {
                                     Id = 10,
                                     Email = "mike@example.com",
-                                    KeycloakId = 10,
+                                    KeycloakId = "",
                                     FirstName = "Mike",
                                     LastName = "Brown",
-                                    isContributor = true,
-                                    isAdmin = false
+                                    IsContributor = true,
+                                    IsAdmin = false
                                 }
             };
         }
