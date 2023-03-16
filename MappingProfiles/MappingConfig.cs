@@ -29,6 +29,10 @@ namespace MeFitAPI.MappingProfiles
             // Exercises
             CreateMap<ExerciseCreateDTO, Exercise>().ReverseMap();
             CreateMap<ExerciseUpdateDTO, Exercise>().ReverseMap();
+
+            // Addresses
+            CreateMap<AddressCreateDTO, Address>().ReverseMap();
+            CreateMap<AddressUpdateDTO, Address>().ReverseMap();
         }
     }
 }

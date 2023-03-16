@@ -1,4 +1,6 @@
 ﻿using MeFitAPI.Models.Domain;
+using MeFitAPI.Models.DTO.UsersDTO;
+using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
 namespace MeFitAPI.Models.DTO.ProfilesDTO;
@@ -11,5 +13,5 @@ public class ProfileCreateDTO
     public string? Disabilities { get; set; }
     [Required]
     public string UserId { get; set; }
-    public int AddressId { get; set; }
+    public AddressCreateDTO Address { get; set; }
 }
