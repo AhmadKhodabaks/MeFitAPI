@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MeFitAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class _1st_DbMigration : Migration
+    public partial class _1st_dbmigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,12 +20,12 @@ namespace MeFitAPI.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    AddressLine1 = table.Column<string>(type: "text", nullable: false),
-                    AddressLine2 = table.Column<string>(type: "text", nullable: false),
-                    AddressLine3 = table.Column<string>(type: "text", nullable: false),
-                    PostalCode = table.Column<string>(type: "text", nullable: false),
-                    City = table.Column<string>(type: "text", nullable: false),
-                    Country = table.Column<string>(type: "text", nullable: false)
+                    AddressLine1 = table.Column<string>(type: "text", nullable: true),
+                    AddressLine2 = table.Column<string>(type: "text", nullable: true),
+                    AddressLine3 = table.Column<string>(type: "text", nullable: true),
+                    PostalCode = table.Column<string>(type: "text", nullable: true),
+                    City = table.Column<string>(type: "text", nullable: true),
+                    Country = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -147,7 +147,7 @@ namespace MeFitAPI.Migrations
                     Height = table.Column<string>(type: "text", nullable: true),
                     MedicalConditions = table.Column<string>(type: "text", nullable: true),
                     Disabilities = table.Column<string>(type: "text", nullable: true),
-                    UserId = table.Column<string>(type: "text", nullable: false),
+                    UserId = table.Column<string>(type: "text", nullable: true),
                     GoalId = table.Column<int>(type: "integer", nullable: false),
                     AddressId = table.Column<int>(type: "integer", nullable: false),
                     ProgramId = table.Column<int>(type: "integer", nullable: false),

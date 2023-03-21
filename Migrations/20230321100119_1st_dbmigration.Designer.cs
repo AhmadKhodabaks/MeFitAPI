@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MeFitAPI.Migrations
 {
     [DbContext(typeof(MeFitDbContext))]
-    [Migration("20230315210623_1st_DbMigration")]
-    partial class _1st_DbMigration
+    [Migration("20230321100119_1st_dbmigration")]
+    partial class _1st_dbmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,27 +34,21 @@ namespace MeFitAPI.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("AddressLine1")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("AddressLine2")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("AddressLine3")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Country")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("PostalCode")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -504,7 +498,6 @@ namespace MeFitAPI.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Weight")

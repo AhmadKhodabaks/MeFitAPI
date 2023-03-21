@@ -13,7 +13,7 @@ public class ProfileUpdateDTO
     public string Height { get; set; }
     public string MedicalConditions { get; set; }
     public string Disabilities { get; set; }
-    public AddressUpdateDTO Address { get; set; }
+    public Address? Address { get; set; }
     public int GoalId { get; set; }
     public int ProgramId { get; set; }
     public int WorkoutId { get; set; }

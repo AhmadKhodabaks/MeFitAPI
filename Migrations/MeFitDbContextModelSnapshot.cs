@@ -31,27 +31,21 @@ namespace MeFitAPI.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("AddressLine1")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("AddressLine2")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("AddressLine3")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Country")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("PostalCode")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -501,7 +495,6 @@ namespace MeFitAPI.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Weight")
