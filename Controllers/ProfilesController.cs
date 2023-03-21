@@ -97,13 +97,13 @@ public class ProfilesController : ControllerBase
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPatch("{id}")]
-        public async Task<IActionResult> Patch(int id, JsonPatchDocument<ProfileUpdateDTO> patch)
+        public async Task<IActionResult> Patch(int id, string navigationProperty, JsonPatchDocument<ProfileUpdateDTO> patch)
         {
             if (patch == null || id == 0)
             {
                 return BadRequest();
             }
-            var value = await _context.GetAsync(u => u.Id == id, tracked: false);
+            var value = await _context.GetAsync(u => u.Id == id, navigationProperty, tracked: false);
 
 
             ProfileUpdateDTO profileDTO = _mapper.Map<ProfileUpdateDTO>(value);         

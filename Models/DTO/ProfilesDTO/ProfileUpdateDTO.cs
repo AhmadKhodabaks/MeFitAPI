@@ -13,7 +13,9 @@ public class ProfileUpdateDTO
     public string Height { get; set; }
     public string MedicalConditions { get; set; }
     public string Disabilities { get; set; }
+    public int AddressId { get; set; }
     public Address? Address { get; set; }
+    public string? UserId { get; set; }
     public int GoalId { get; set; }
     public int ProgramId { get; set; }
     public int WorkoutId { get; set; }
